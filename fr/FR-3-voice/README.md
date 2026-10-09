@@ -18,11 +18,11 @@
 
 | ไฟล์ | หน้าที่ (เขียนเอง 1 บรรทัด) |
 |---|---|
-| [`src/domain/voice.ts`](../../src/domain/voice.ts) | ✏️ |
-| [`src/domain/__tests__/voice.test.ts`](../../src/domain/__tests__/voice.test.ts) | ✏️ |
-| [`src/services/speech.ts`](../../src/services/speech.ts) | ✏️ |
-| [`src/services/speech.web.ts`](../../src/services/speech.web.ts) | ✏️ |
-| [`src/app/voice.tsx`](../../src/app/voice.tsx) | ✏️ |
+| [`src/domain/voice.ts`](../../src/domain/voice.ts) | ฟังก์ชันล้วนที่แปลงประโยคที่พูดเป็นรายการ (ชื่อ จำนวนเงิน รายรับ/จ่าย หมวด วัน) โดยไม่ใช้ AI |
+| [`src/domain/__tests__/voice.test.ts`](../../src/domain/__tests__/voice.test.ts) | unit test TC-59 ถึง TC-61 ตรวจเลขคำไทย หลายรายการ รายรับ เมื่อวาน และหน่วยที่ไม่ใช่เงิน |
+| [`src/services/speech.ts`](../../src/services/speech.ts) | ฟังเสียงภาษาไทยบนมือถือผ่าน expo-speech-recognition โดยโหลดโมดูลแบบไม่บังคับ |
+| [`src/services/speech.web.ts`](../../src/services/speech.web.ts) | ฟังเสียงภาษาไทยบนเว็บผ่าน Web Speech API |
+| [`src/app/voice.tsx`](../../src/app/voice.tsx) | หน้าจอพูดจด: ไมค์ แท่งเสียง ช่องพิมพ์ การ์ดรายการให้ตรวจ และปุ่มบันทึก |
 
 ### ส่วนกลางที่ฉันดูแลเพิ่ม (ไม่ใช่ของ FR นี้โดยตรง)
 
