@@ -1,10 +1,8 @@
 # FR-3 Voice Entry · พูดจด
 
-**ผู้รับผิดชอบ:** ✏️ Vorachone Srijariyakorn (stangmoonoi)
+**ผู้รับผิดชอบ:**  Vorachone Srijariyakorn (stangmoonoi)
 **ชุดงาน:** ชุดที่ 2
 
-> ✏️ = ช่องที่ต้องเขียนเองด้วยคำของตัวเอง ลบเครื่องหมาย ✏️ ออกเมื่อเขียนเสร็จ
-> อ่านประกอบ: หนังสือ `MindPay-FR3-Voice-Entry.pdf`
 
 ## FR นี้แก้ปัญหาอะไร
 
