@@ -1,0 +1,104 @@
+{
+  "expo": {
+    "name": "MindPay",
+    "slug": "mindpay",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.socratesandskeletons.mindpay",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "MindPay ตรวจรูปในแกลเลอรีเพื่อหาสลิปโอนเงินและบันทึกรายการให้อัตโนมัติ"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0E3B2C",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.socratesandskeletons.mindpay",
+      "blockedPermissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_AUDIO"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single",
+      "bundler": "metro",
+      "name": "MindPay",
+      "themeColor": "#0E3B2C",
+      "backgroundColor": "#F2F5F1"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite",
+      "expo-font",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "MindPay ตรวจรูปในแกลเลอรีเพื่อหาสลิปโอนเงินและบันทึกรายการให้อัตโนมัติ",
+          "savePhotosPermission": false,
+          "isAccessMediaLocationEnabled": false,
+          "granularPermissions": [
+            "photo"
+          ]
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "เลือกรูปสลิปเพื่อให้ MindPay อ่านรายการ",
+          "cameraPermission": false,
+          "microphonePermission": "MindPay ใช้ไมโครโฟนเมื่อคุณแตะปุ่มไมค์เพื่อพูดจดรายการ เช่น “ข้าว 50 บาท”"
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0E3B2C",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160
+        }
+      ],
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "MindPay ใช้ไมโครโฟนเมื่อคุณแตะปุ่มไมค์เพื่อพูดจดรายการ เช่น “ข้าว 50 บาท”",
+          "speechRecognitionPermission": "MindPay แปลงเสียงที่คุณพูดเป็นรายการรายรับรายจ่าย",
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox"
+          ]
+        }
+      ]
+    ],
+    "scheme": "mindpay",
+    "experiments": {
+      "typedRoutes": true
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/eb06a5c2-48ad-4602-bbaa-f4af2bcce7f0",
+      "requestHeaders": {
+        "expo-channel-name": "production"
+      },
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
+    },
+    "extra": {
+      "eas": {
+        "projectId": "eb06a5c2-48ad-4602-bbaa-f4af2bcce7f0"
+      }
+    },
+    "owner": "expokler"
+  }
+}
