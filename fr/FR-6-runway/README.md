@@ -1,48 +1,77 @@
-# FR-6 Money Runway · เงินพอถึง
+FR-6 Money Runway · เงินพอถึง
 
-**ผู้รับผิดชอบ:** ✏️ ชื่อ-นามสกุล (@GitHub-username)
-**ชุดงาน:** ชุดที่ 5
+ผู้รับผิดชอบ: Sithikan Potiyun (@2550expo-tech) ชุดงาน: ชุดที่ 5
 
-> ✏️ = ช่องที่ต้องเขียนเองด้วยคำของตัวเอง ลบเครื่องหมาย ✏️ ออกเมื่อเขียนเสร็จ
-> อ่านประกอบ: หนังสือ `MindPay-FR6-Money-Runway.pdf`
+FR นี้แก้ปัญหาอะไร
 
-## FR นี้แก้ปัญหาอะไร
+แอปจดเงินส่วนใหญ่บอกได้แค่ว่า "ใช้ไปแล้วเท่าไร" ซึ่งเป็นเรื่องที่ผ่านไปแล้ว แต่สิ่งที่นักศึกษาอยากรู้จริง ๆ คือ "เงินที่เหลือจะพอใช้ถึงวันไหน" หลายคนรู้ตัวว่าเงินไม่พอก็ตอนกลางเดือนที่เหลือไม่กี่ร้อยแล้ว FR-6 เอาค่าเฉลี่ยรายจ่ายจริง 7 วันล่าสุดมาคำนวณว่า เงินจะลดลงถึง "เส้นเงินสำรอง" ที่ผู้ใช้ตั้งไว้ในอีกกี่วัน เช่น มีเงิน ฿10,000 ใช้วันละ ฿150 ตั้งเงินสำรอง ฿500 จะพอใช้อีก 63 วัน นอกจากนี้ยังช่วยคิดก่อนจ่าย ลองใส่ราคาของที่อยากซื้อ ฿2,000 แล้วเห็นทันทีว่าจะเหลือ 50 วัน หรือลองลดรายจ่าย 30% แล้วเห็นว่าจะพอใช้ได้ 90 วัน และเงินที่หยอดกระปุกออมไว้จะไม่ถูกนับเป็นเงินที่ใช้ได้
 
-✏️ 3–5 บรรทัด: ผู้ใช้เจอปัญหาอะไร และ FR นี้ช่วยได้ยังไง
+Requirement และเกณฑ์ผ่าน (Acceptance criteria)
 
-## Requirement และเกณฑ์ผ่าน (Acceptance criteria)
+Requirement: "ประมาณวันที่ยอดเงินอาจต่ำ จากค่าเฉลี่ยรายจ่าย 7 วัน"
 
-✏️ เขียนเป็นข้อ ๆ ว่าต้องทำอะไรได้บ้างจึงถือว่า FR นี้ผ่าน
+นิยามที่ใช้ (ตอบ feedback เรื่อง "Low balance" ใน SRS): เส้นเงินสำรองค่าเริ่มต้น ฿500 · Runway = ⌊(ยอดคงเหลือ − เส้นสำรอง − เงินในกระปุก) ÷ ค่าเฉลี่ยต่อวัน⌋ · น้อยกว่า 7 วัน = critical, น้อยกว่า 14 วัน = watch, ตั้งแต่ 14 วัน = healthy
 
-## ไฟล์ที่ฉันรับผิดชอบ
+ค่าเฉลี่ยนับวันที่ไม่ได้ใช้เงินด้วย วันที่ใช้ ฿0 ไม่ถูกข้าม (TC-12)
+ผู้ใช้ใหม่หารด้วยจำนวนวันที่จดจริง เริ่มมา 3 วันหารด้วย 3 ไม่ใช่ 7 ค่าเฉลี่ยจึงไม่ต่ำกว่าความจริง (TC-13)
+บอกได้ทั้งจำนวนวันและวันที่ เช่น จากวันที่ 10 ต.ค. พอใช้อีก 63 วัน คือถึงวันที่ 12 ธ.ค. (TC-14)
+ถ้า 7 วันที่ผ่านมาไม่มีรายจ่าย ไม่หารด้วยศูนย์ แต่แสดง "รอข้อมูลรายจ่าย" แทน (TC-15)
+ยอดคงเหลือ ≤ เส้นสำรอง ขึ้น "ต่ำกว่าเงินสำรอง" ทันที (TC-16)
+ป้ายสถานะ สบาย ๆ / เริ่มต้องระวัง / ใกล้เส้นสำรอง ตรงตามเกณฑ์วัน (TC-17)
+"เช็กก่อนจ่าย" ใส่ราคาแล้วเห็นจำนวนวันก่อนและหลังซื้อ และหน้าหลักบอก "ใช้ได้วันละเท่าไรถึงสิ้นเดือน" ปัดลงเป็นบาทเต็ม (TC-18)
+แถบเลื่อน "ใช้น้อยลงวันละ" 0–50% ทีละ 5% เห็นจำนวนวันที่เพิ่มขึ้นทันที ใช้ได้ทั้งลาก แตะ ปุ่มลูกศร และโปรแกรมอ่านหน้าจอ (E2E)
+กระปุกออม ตั้งเป้า (ชื่อ ไอคอน จำนวน กำหนดวัน) หยอด/ถอนได้ บอกว่าต้องเก็บวันละเท่าไรถึงทัน เช่น เป้า ฿3,000 ใน 30 วัน = วันละ ฿100 และเงินในกระปุกถูกหักออกจาก Runway (TC-71, E2E)
+ผู้ใช้เห็นเฉพาะกระปุกของตัวเอง ด้วย Row Level Security ของตาราง savings_goals
+ไฟล์ที่ฉันรับผิดชอบ
+ไฟล์	หน้าที่ (เขียนเอง 1 บรรทัด)
+src/domain/runway.ts	ฟังก์ชันล้วนที่คำนวณค่าเฉลี่ย 7 วัน Runway สถานะ เช็กก่อนจ่าย ลองลดรายจ่าย และใช้ได้วันละเท่าไรถึงสิ้นเดือน
+src/domain/goals.ts	กฎของกระปุกออม: ความคืบหน้า เงินที่ถูกกันไว้ ต้องเก็บวันละเท่าไร และการหยอด/ถอน
+src/domain/__tests__/goals.test.ts	unit test TC-71 ตรวจความคืบหน้า เงินที่กันไว้ จำนวนต่อวัน และการครบเป้า
+src/app/(tabs)/runway.tsx	หน้าจอเงินพอถึง: วงแหวนจำนวนวัน ป้ายสถานะ ยอดเงินวันข้างหน้า แถบเลื่อน และเช็กก่อนจ่าย
+src/app/goals.tsx	หน้ากระปุกออม: หยอด ถอน ดูความคืบหน้า และฉลองเมื่อครบเป้า
+src/app/goal.tsx	ฟอร์มสร้าง แก้ไข และลบกระปุก
+src/ui/Slider.tsx	แถบเลื่อนที่ลาก แตะ กดลูกศร และใช้กับโปรแกรมอ่านหน้าจอได้
+src/ui/Jar.tsx	โหลแก้วเติมทองตามความคืบหน้า มีเหรียญหล่นตอนหยอด
+src/ui/art.tsx	ภาพวาดในแอป รวมถึงต้นไม้เงินที่มีใบทองมากขึ้นเมื่อเงินพอใช้นานขึ้น
+supabase/migrations/20260929000000_savings_goals.sql	สร้างตาราง savings_goals พร้อมตรวจข้อมูล (ชื่อ 1–60 ตัว เงินไม่ติดลบ) และ RLS เจ้าของเท่านั้น
+ส่วนกลางที่ฉันดูแลเพิ่ม (ไม่ใช่ของ FR นี้โดยตรง)
+ชุดเทสต์รวมของแอป (1 ไฟล์): src/domain/__tests__/domain.test.ts
+โครงแอป: เมนูหลัก ตั้งค่า เหรียญ และมีอะไรใหม่ (14 ไฟล์): src/app/_layout.tsx, src/app/(tabs)/_layout.tsx, src/app/settings.tsx, src/app/whatsnew.tsx, src/app/achievements.tsx, src/services/whatsNew.ts, src/services/useAchievements.ts, src/data/prefs.ts, src/domain/sample.ts, src/domain/achievements.ts, src/domain/__tests__/sample.test.ts, src/domain/__tests__/achievements.test.ts, src/ui/UpdateBanner.tsx, src/ui/Medal.tsx
+ตั้งค่าโปรเจกต์ CI ไอคอน และเอกสาร (33 ไฟล์): package.json, package-lock.json, tsconfig.json, eslint.config.js, vitest.config.ts, app.json, app.config.js, eas.json, .env.example, .claude/settings.json, AGENTS.md, CLAUDE.md, README.md, .github/workflows/web.yml, .github/workflows/e2e-webkit.yml, .github/workflows/android-apk.yml, .github/workflows/eas-update.yml, scripts/make_icons.py, scripts/theme-shot.mjs, scripts/web-home-screen.mjs, e2e/demo-video.mjs, e2e/fake-backend.mjs, docs/AI_USAGE_LOG.md, docs/TRACEABILITY.md, assets/android-icon-background.png, assets/android-icon-foreground.png, assets/android-icon-monochrome.png, assets/favicon.png, assets/icon.png, assets/splash-icon.png, assets/web/apple-touch-icon.png, assets/web/icon-192.png, assets/web/icon-512.png
+ทำงานยังไง
 
-| ไฟล์ | หน้าที่ (เขียนเอง 1 บรรทัด) |
-|---|---|
-| [`src/domain/runway.ts`](../../src/domain/runway.ts) | ✏️ |
-| [`src/domain/goals.ts`](../../src/domain/goals.ts) | ✏️ |
-| [`src/domain/__tests__/goals.test.ts`](../../src/domain/__tests__/goals.test.ts) | ✏️ |
-| [`src/app/(tabs)/runway.tsx`](../../src/app/%28tabs%29/runway.tsx) | ✏️ |
-| [`src/app/goals.tsx`](../../src/app/goals.tsx) | ✏️ |
-| [`src/app/goal.tsx`](../../src/app/goal.tsx) | ✏️ |
-| [`src/ui/Slider.tsx`](../../src/ui/Slider.tsx) | ✏️ |
-| [`src/ui/Jar.tsx`](../../src/ui/Jar.tsx) | ✏️ |
-| [`src/ui/art.tsx`](../../src/ui/art.tsx) | ✏️ |
-| [`supabase/migrations/20260929000000_savings_goals.sql`](../../supabase/migrations/20260929000000_savings_goals.sql) | ✏️ |
+รายการ → ค่าเฉลี่ย → Runway → หน้าจอ → ตัดสินใจก่อนจ่าย ผ่านไฟล์ดังนี้
 
-### ส่วนกลางที่ฉันดูแลเพิ่ม (ไม่ใช่ของ FR นี้โดยตรง)
+จดรายการ ผ่าน FR-1 (พิมพ์), FR-3 (พูด) หรือ FR-4 (สลิป) รายการที่ยืนยันแล้วเข้า AppProvider
+คำนวณ ที่ useMoney() ใน AppProvider.tsx ทำ 3 ขั้น 2.1 averageDailyExpense (runway.ts) รวมรายจ่าย 7 วันล่าสุดตามเวลาไทย แล้วหารด้วยจำนวนวันที่จดจริง (สูงสุด 7) 2.2 reservedSatang (goals.ts) รวมเงินในกระปุกทุกใบ 2.3 computeRunway (runway.ts) ใช้ "เส้นสำรอง + เงินในกระปุก" เป็นเส้นล่าง หาจำนวนวัน วันที่ และสถานะ เช่น กันเงินไว้ในกระปุก ฿3,000 Runway จาก 63 วันจะเหลือ 43 วัน
+แสดงผล ที่ runway.tsx วงแหวน ป้ายสถานะ และยอดเงินในวันข้างหน้า ส่วนหน้าหลักแสดง "ใช้ได้วันละเท่าไรถึงสิ้นเดือน" จาก safeDailySpend
+ลากแถบเลื่อน ที่ Slider.tsx แล้ว runwayWithReduction คำนวณใหม่จากค่าเฉลี่ยที่ลดลง
+ใส่ราคาในเช็กก่อนจ่าย แล้ว runwayAfterPurchase คำนวณ Runway หลังซื้อ กด "ถามโค้ชเรื่องนี้" ส่งคำถามพร้อมราคาไปให้น้องกล้า (FR-5)
+หยอด/ถอนกระปุก ที่ goals.tsx ผ่าน applyDeposit บันทึกลงตาราง savings_goals แล้ว Runway เปลี่ยนตามทันที
+ขึ้นวันใหม่ ตัวเลขทั้งหมดคำนวณใหม่เองตอนเที่ยงคืนเวลาไทย
 
-- **ชุดเทสต์รวมของแอป** (1 ไฟล์): `src/domain/__tests__/domain.test.ts`
-- **โครงแอป: เมนูหลัก ตั้งค่า เหรียญ และมีอะไรใหม่** (14 ไฟล์): `src/app/_layout.tsx`, `src/app/(tabs)/_layout.tsx`, `src/app/settings.tsx`, `src/app/whatsnew.tsx`, `src/app/achievements.tsx`, `src/services/whatsNew.ts`, `src/services/useAchievements.ts`, `src/data/prefs.ts`, `src/domain/sample.ts`, `src/domain/achievements.ts`, `src/domain/__tests__/sample.test.ts`, `src/domain/__tests__/achievements.test.ts`, `src/ui/UpdateBanner.tsx`, `src/ui/Medal.tsx`
-- **ตั้งค่าโปรเจกต์ CI ไอคอน และเอกสาร** (33 ไฟล์): `package.json`, `package-lock.json`, `tsconfig.json`, `eslint.config.js`, `vitest.config.ts`, `app.json`, `app.config.js`, `eas.json`, `.env.example`, `.claude/settings.json`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `.github/workflows/web.yml`, `.github/workflows/e2e-webkit.yml`, `.github/workflows/android-apk.yml`, `.github/workflows/eas-update.yml`, `scripts/make_icons.py`, `scripts/theme-shot.mjs`, `scripts/web-home-screen.mjs`, `e2e/demo-video.mjs`, `e2e/fake-backend.mjs`, `docs/AI_USAGE_LOG.md`, `docs/TRACEABILITY.md`, `assets/android-icon-background.png`, `assets/android-icon-foreground.png`, `assets/android-icon-monochrome.png`, `assets/favicon.png`, `assets/icon.png`, `assets/splash-icon.png`, `assets/web/apple-touch-icon.png`, `assets/web/icon-192.png`, `assets/web/icon-512.png`
+เงินเก็บเป็นสตางค์ (จำนวนเต็ม) และทุกฟังก์ชันใน runway.ts รับ "วันนี้" เป็นพารามิเตอร์ จึงเป็นฟังก์ชันล้วนที่ทดสอบด้วยวันที่ใดก็ได้ ไม่ขึ้นกับวันที่รันเทสต์
 
-## ทำงานยังไง
+การทดสอบ
+Test	ตรวจอะไร
+TC-12	ค่าเฉลี่ย 7 วันนับวันที่ไม่ได้ใช้เงินด้วย
+TC-13	ผู้ใช้ใหม่หารด้วยจำนวนวันที่จดจริง
+TC-14	จำนวนวันและวันที่เงินถึงเส้นสำรอง
+TC-15	ไม่มีรายจ่ายแล้วไม่หารด้วยศูนย์
+TC-16	ยอด ≤ เส้นสำรอง ได้สถานะต่ำกว่าเงินสำรอง
+TC-17	เกณฑ์สถานะ healthy / watch / critical
+TC-18	เช็กก่อนจ่าย และใช้ได้วันละเท่าไรถึงสิ้นเดือน
+TC-33	ข้อมูลตัวอย่างมี Runway อย่างน้อย 10 วัน ไม่ว่าเปิดแอปวันไหน
+TC-71	กระปุกออม: ความคืบหน้า เงินที่กันไว้ วันละเท่าไร ครบเป้า
+E2E	ลากแถบถึง 30% เห็นวันเพิ่ม, กดลูกศรขยับทีละ 5%, ใส่ราคา ฿2,000 เห็นวันก่อน/หลังซื้อ, ปุ่มถามโค้ชส่งราคาไปถูก, หยอดกระปุก ฿500 = 20% แล้ว Runway หักเงินกระปุก
+MT-02, MT-08	ทดสอบด้วยมือบนมือถือจริง (จดรายจ่ายแล้ว Runway เปลี่ยน, ถามโค้ชเรื่องซื้อของ)
 
-✏️ เล่าตั้งแต่ผู้ใช้กดปุ่ม จนถึงเห็นผลบนจอ ว่าข้อมูลผ่านไฟล์ไหนบ้าง
+รัน unit test ด้วย npm test (ทั้งแอป 157/157 ผ่าน) ส่วน E2E ผ่าน 145/145 ทั้ง Chromium และ WebKit บน GitHub Actions
 
-## การทดสอบ
-
-✏️ เทสต์ไหนตรวจอะไร และรันยังไง (เช่น `npm test`)
-
-## ข้อจำกัดและงานต่อไป
-
-✏️ สิ่งที่ยังไม่ดี และสิ่งที่อยากทำต่อ (ดูไอเดียได้จากบท "ข้อจำกัด" ในหนังสือ)
+ข้อจำกัดและงานต่อไป
+รายจ่ายก้อนใหญ่ครั้งเดียวดึงค่าเฉลี่ยพุ่ง (Runway สั้นเกินจริง): ใช้วันละ ฿150 มีเงิน ฿10,000 ได้ 63 วัน แต่จ่ายค่าหอ ฿3,500 วันเดียว ค่าเฉลี่ยกลายเป็น ฿650 เหลือ 14 วัน → งานต่อ: แยกรายจ่ายประจำออกจากค่าเฉลี่ย หรือใช้ค่ามัธยฐาน
+ผู้ใช้วันแรกได้ตัวเลขแกว่งมาก (ตกใจโดยไม่จำเป็น): วันแรกซื้อหนังสือ ฿2,000 มีเงิน ฿5,000 ได้ Runway 2 วัน สถานะใกล้เส้นสำรอง เพราะหารด้วย 1 วัน → งานต่อ: แสดง "ข้อมูลยังน้อย" จนกว่าจะจดครบ 3 วัน
+ไม่นับเงินที่จะเข้าในอนาคต (Runway ต่ำกว่าจริง): แม่โอนค่าขนม ฿3,000 ทุกวันที่ 1 แต่ Runway ไม่รู้ว่าเงินจะเข้า หน้าจอจึงเขียนกำกับไว้ว่า "ยังไม่รวมรายรับที่จะเข้ามา" → งานต่อ: ใช้ recurring.ts ของ FR-1 ที่หารายการประจำได้แล้ว มาทำนายรายรับ
+ไม่หักบิลที่จะครบกำหนด (Runway สูงเกินจริง): ค่าเน็ตที่จะตัดในอีก 3 วันยังไม่ถูกหักล่วงหน้า → งานต่อ: ใช้ recurring.ts หักรายจ่ายประจำตามวันครบกำหนด
+ดูย้อนแค่ 7 วัน (ตัวเลขเปลี่ยนตามช่วงพิเศษ): สัปดาห์สอบกินน้อยทำให้ Runway ดูดีเกินจริง → งานต่อ: ให้เลือกช่วงคำนวณ 7 / 14 / 30 วัน
+เกิน 365 วันแสดงเป็น "เกิน 1 ปี": ตั้งใจไว้ เพราะประมาณไกลขนาดนั้นไม่แม่นพอ
