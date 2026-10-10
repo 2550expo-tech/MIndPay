@@ -6,11 +6,6 @@ A personal finance app for university students and first jobbers. It does more t
 
 Course: Introduction to Software Engineering (15031001) · Team 13. Socrates and Skeletons
 
-> **Where this repository comes from**
-> The first version of the code was moved from the team's original repository [2550expo-tech/Socrates-and-Skeletons-](https://github.com/2550expo-tech/Socrates-and-Skeletons-) (commit [`646b485`](https://github.com/2550expo-tech/Socrates-and-Skeletons-/commit/646b485), 3 Oct 2026), which keeps the full development history from 27 Sep 2026.
-> The code was then split into 5 work packages by FR, and each member commits the part they are responsible for.
-> The links under "Try it" are the web app and APK built from the original repository. This repository will have its own web app at `https://<owner>.github.io/<repository name>/` once GitHub Pages is turned on.
-
 ## Who did what (`fr/` folder)
 
 | Package | Work | Owner's README |
