@@ -51,18 +51,18 @@
 
 ## ทำงานยังไง
 
- 1.ผู้ใช้กดปุ่มสแกน (src/app/scan.tsx) หน้าจอเรียก useSlipScanner ใน src/services/useSlipScanner.ts
- 2.ดึงรูปจากแกลเลอรี src/services/gallery.ts (บนเว็บใช้ gallery.web.ts) แล้วคัดเฉพาะรูปที่ถ่ายหรือบันทึกตั้งแต่เวลาติดตั้งแอพเป็นต้นไป
- 3.เข้าคิว src/domain/scanQueue.ts จัดคิวรูปทีละใบ ส่วน autoScan.ts กับ AutoScanProvider.tsx ดูแลการสแกนอัตโนมัติและแสดงสถานะผ่าน AutoScanBanner.tsx
- 4.ประมวลผลสลิป src/services/processSlip.ts ส่งรูปไปที่ Edge Function supabase/functions/parse-slip/index.ts ซึ่งอ่านข้อมูลจากรูปโดยใช้ _shared/helpers.ts และ _shared/common.ts
- 5.แปลงและตรวจผล src/domain/slip.ts และ slipNames.ts จัดรูปข้อมูลและจับคู่ชื่อ (ร่วมกับ src/services/myNames.ts) แล้วตรวจว่าวันที่/เวลาของสลิปไม่เก่ากว่าเวลาติดตั้ง
- 6.บันทึกและแสดงผล src/services/slips.ts บันทึกเป็นรายการร่าง จากนั้น drafts.tsx แสดงรายการ, ScannerStage.tsx กับ WaitNotice.tsx แสดงความคืบหน้าระหว่างรอ และ PeriodSummary.tsx สรุปยอดตามช่วงเวลา
+ 1.ผู้ใช้กดปุ่มสแกน `(src/app/scan.tsx)` หน้าจอเรียก `useSlipScanner` ใน `src/services/useSlipScanner.ts`
+ 2.ดึงรูปจากแกลเลอรี `src/services/gallery.ts` (บนเว็บใช้ `gallery.web.ts`) แล้วคัดเฉพาะรูปที่ถ่ายหรือบันทึกตั้งแต่เวลาติดตั้งแอพเป็นต้นไป
+ 3.เข้าคิว `src/domain/scanQueue.ts` จัดคิวรูปทีละใบ ส่วน `autoScan.ts` กับ `AutoScanProvider.tsx` ดูแลการสแกนอัตโนมัติและแสดงสถานะผ่าน `AutoScanBanner.tsx`
+ 4.ประมวลผลสลิป `src/services/processSlip.ts` ส่งรูปไปที่ `Edge Function supabase/functions/parse-slip/index.ts` ซึ่งอ่านข้อมูลจากรูปโดยใช้ `_shared/helpers.ts` และ `_shared/common.ts`
+ 5.แปลงและตรวจผล `src/domain/slip.ts` และ `slipNames.ts` จัดรูปข้อมูลและจับคู่ชื่อ (ร่วมกับ `src/services/myNames.ts`) แล้วตรวจว่าวันที่/เวลาของสลิปไม่เก่ากว่าเวลาติดตั้ง
+ 6.บันทึกและแสดงผล `src/services/slips.ts` บันทึกเป็นรายการร่าง จากนั้น `drafts.tsx` แสดงรายการ, `ScannerStage.tsx` กับ `WaitNotice.tsx` แสดงความคืบหน้าระหว่างรอ และ `PeriodSummary.tsx` สรุปยอดตามช่วงเวลา
  
 ## การทดสอบ
 
- 1.src/domain/__tests__/autoScan.test.ts ตรวจลอจิกการสแกนอัตโนมัติและการคัดสลิปตามเวลาติดตั้ง
- 2.src/domain/__tests__/slipAccuracy.test.ts ตรวจความแม่นยำของการอ่านข้อมูลสลิป
- 3.supabase/functions/_shared/__tests__/helpers.test.ts ตรวจฟังก์ชันช่วยฝั่ง Edge Function
+ 1.`src/domain/__tests__/autoScan.test.ts` ตรวจลอจิกการสแกนอัตโนมัติและการคัดสลิปตามเวลาติดตั้ง
+ 2.`src/domain/__tests__/slipAccuracy.test.ts` ตรวจความแม่นยำของการอ่านข้อมูลสลิป
+ 3.`supabase/functions/_shared/__tests__/helpers.test.ts` ตรวจฟังก์ชันช่วยฝั่ง Edge Function
 
 ## ข้อจำกัดและงานต่อไป
 
