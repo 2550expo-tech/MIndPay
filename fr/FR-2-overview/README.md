@@ -1,6 +1,6 @@
 # FR-2 Overview Dashboard · ภาพรวม
 
-**ผู้รับผิดชอบ:** พัชระพรชัย ค้าไป (GitHub-IOhmmy)
+**ผู้รับผิดชอบ:** พัชระพรชัย ค้าไป (GitHub-newseoome-cymk)
 
 ## FR นี้แก้ปัญหาอะไร
 
