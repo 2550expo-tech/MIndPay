@@ -1,8 +1,12 @@
+[English](README.en.md) | **ภาษาไทย**
+
 # MindPay
 
 แอปการเงินส่วนตัวสำหรับนักศึกษาและ First Jobber ที่ไม่ได้แค่ "จดว่าใช้ไปเท่าไร" แต่บอกว่า **เงินที่มีจะพอใช้อีกกี่วัน** และช่วยคิด **ก่อน** จ่าย
 
 รายวิชา Introduction to Software Engineering (15031001) · ทีม 13. Socrates and Skeletons
+
+> **ที่มาของ repo นี้:** โค้ดย้ายมาจาก repo เดิมของทีม [2550expo-tech/Socrates-and-Skeletons-](https://github.com/2550expo-tech/Socrates-and-Skeletons-) ซึ่งเก็บประวัติการพัฒนาตั้งแต่ 27 ก.ย. 2569 แล้วแบ่งเป็น 5 ชุดตาม FR ให้แต่ละคน commit ส่วนที่ตัวเองรับผิดชอบ ลิงก์ในหัวข้อ "ลองใช้" เป็นเว็บและ APK จาก repo เดิม
 
 ## งานของแต่ละคน (โฟลเดอร์ `fr/`)
 
