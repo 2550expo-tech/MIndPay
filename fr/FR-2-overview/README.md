@@ -33,7 +33,6 @@
 
 ## ไฟล์ที่ฉันรับผิดชอบ
 
-| ไฟล์ | หน้าที่ (เขียนเอง 1 บรรทัด) |
 |---|---|
 | [`src/domain/summary.ts`](../../src/domain/summary.ts) | 
 | [`src/domain/dates.ts`](../../src/domain/dates.ts) | 
@@ -52,7 +51,9 @@ FR-2 จะแสดงหน้าต่าง Dashboard , กราฟ แล�
 ## การทดสอบ
 
 Unit test: วันไทยและช่วงเวลา (TC-03, TC-08)
+
 Unit test: ภาพรวม (TC-09, TC-10, TC-11)
+
 Unit test: สรุปเดือนและปฏิทิน (TC-69, TC-70)
 
 
