@@ -4,11 +4,6 @@
 
 รายวิชา Introduction to Software Engineering (15031001) · ทีม 13. Socrates and Skeletons
 
-> **ที่มาของ repo นี้**
-> โค้ดชุดแรกย้ายมาจาก repo เดิมของกลุ่ม [2550expo-tech/Socrates-and-Skeletons-](https://github.com/2550expo-tech/Socrates-and-Skeletons-) (commit [`646b485`](https://github.com/2550expo-tech/Socrates-and-Skeletons-/commit/646b485) วันที่ 3 ต.ค. 2569) ซึ่งเก็บประวัติการพัฒนาตั้งแต่ 27 ก.ย. 2569
-> จากนั้นแบ่งเป็น 5 ชุดตาม FR ให้สมาชิกแต่ละคน commit ส่วนที่ตัวเองรับผิดชอบผ่าน Pull Request
-> ลิงก์ในหัวข้อ "ลองใช้" เป็นเว็บและ APK ที่สร้างจาก repo เดิม ส่วน repo นี้จะมีเว็บของตัวเองที่ `https://<เจ้าของ repo>.github.io/<ชื่อ repo>/` หลังเปิด GitHub Pages
-
 ## งานของแต่ละคน (โฟลเดอร์ `fr/`)
 
 | ชุด | งาน | README ของผู้รับผิดชอบ |
