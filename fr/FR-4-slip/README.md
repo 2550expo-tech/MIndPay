@@ -21,7 +21,7 @@
 
 | ไฟล์ | หน้าที่ (เขียนเอง 1 บรรทัด) |
 |---|---|
-| [`src/domain/slip.ts`](../../src/domain/slip.ts) |
+| [`src/domain/slip.ts`](../../src/domain/slip.ts) |กำหนดโครงสร้างข้อมูลสลิป (type/model) และ logic พื้นฐาน เช่น การตรวจวันที่ ยอดเงิน
 | [`src/domain/slipNames.ts`](../../src/domain/slipNames.ts) |
 | [`src/domain/scanQueue.ts`](../../src/domain/scanQueue.ts) |
 | [`src/domain/autoScan.ts`](../../src/domain/autoScan.ts) |
