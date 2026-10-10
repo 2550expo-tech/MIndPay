@@ -7,39 +7,43 @@
 
 ## FR นี้แก้ปัญหาอะไร
 
- 3–5 บรรทัด: ผู้ใช้เจอปัญหาอะไร และ FR นี้ช่วยได้ยังไง
+1.ผู้ใช้ไม่เสียเวลาในการสร้างบัญชีรายรับรายจ่าย
+2.แก้ปัญหาลืมบันทึกรายรับรายจ่าย
+3.แก้ปัญหาไม่รู้ว่าเงินหมดไปกับอะไร
 
 ## Requirement และเกณฑ์ผ่าน (Acceptance criteria)
 
- เขียนเป็นข้อ ๆ ว่าต้องทำอะไรได้บ้างจึงถือว่า FR นี้ผ่าน
+ 1.สามารถอ่านสลิปอัตโนมัติได้จากคลังรูปภาพ
+ 2.อ่านชื่อสลิปได้
+ 3.แสกนQRจากสลิปได้
 
 ## ไฟล์ที่ฉันรับผิดชอบ
 
 | ไฟล์ | หน้าที่ (เขียนเอง 1 บรรทัด) |
 |---|---|
-| [`src/domain/slip.ts`](../../src/domain/slip.ts) |  |
-| [`src/domain/slipNames.ts`](../../src/domain/slipNames.ts) |  |
-| [`src/domain/scanQueue.ts`](../../src/domain/scanQueue.ts) |  |
-| [`src/domain/autoScan.ts`](../../src/domain/autoScan.ts) |  |
-| [`src/domain/__tests__/autoScan.test.ts`](../../src/domain/__tests__/autoScan.test.ts) |  |
-| [`src/domain/__tests__/slipAccuracy.test.ts`](../../src/domain/__tests__/slipAccuracy.test.ts) |  |
-| [`supabase/functions/parse-slip/index.ts`](../../supabase/functions/parse-slip/index.ts) |  |
-| [`supabase/functions/_shared/helpers.ts`](../../supabase/functions/_shared/helpers.ts) |  |
-| [`supabase/functions/_shared/common.ts`](../../supabase/functions/_shared/common.ts) |  |
-| [`supabase/functions/_shared/__tests__/helpers.test.ts`](../../supabase/functions/_shared/__tests__/helpers.test.ts) |  |
-| [`src/services/AutoScanProvider.tsx`](../../src/services/AutoScanProvider.tsx) |  |
-| [`src/services/useSlipScanner.ts`](../../src/services/useSlipScanner.ts) |  |
-| [`src/services/slips.ts`](../../src/services/slips.ts) |  |
-| [`src/services/processSlip.ts`](../../src/services/processSlip.ts) |  |
-| [`src/services/gallery.ts`](../../src/services/gallery.ts) |  |
-| [`src/services/gallery.web.ts`](../../src/services/gallery.web.ts) |  |
-| [`src/services/myNames.ts`](../../src/services/myNames.ts) |  |
-| [`src/app/scan.tsx`](../../src/app/scan.tsx) |  |
-| [`src/app/drafts.tsx`](../../src/app/drafts.tsx) |  |
-| [`src/ui/AutoScanBanner.tsx`](../../src/ui/AutoScanBanner.tsx) |  |
-| [`src/ui/ScannerStage.tsx`](../../src/ui/ScannerStage.tsx) |  |
-| [`src/ui/WaitNotice.tsx`](../../src/ui/WaitNotice.tsx) |  |
-| [`src/ui/PeriodSummary.tsx`](../../src/ui/PeriodSummary.tsx) |  |
+| [`src/domain/slip.ts`](../../src/domain/slip.ts) |
+| [`src/domain/slipNames.ts`](../../src/domain/slipNames.ts) |
+| [`src/domain/scanQueue.ts`](../../src/domain/scanQueue.ts) |
+| [`src/domain/autoScan.ts`](../../src/domain/autoScan.ts) |
+| [`src/domain/__tests__/autoScan.test.ts`](../../src/domain/__tests__/autoScan.test.ts) |
+| [`src/domain/__tests__/slipAccuracy.test.ts`](../../src/domain/__tests__/slipAccuracy.test.ts) |
+| [`supabase/functions/parse-slip/index.ts`](../../supabase/functions/parse-slip/index.ts) |
+| [`supabase/functions/_shared/helpers.ts`](../../supabase/functions/_shared/helpers.ts) |
+| [`supabase/functions/_shared/common.ts`](../../supabase/functions/_shared/common.ts) |
+| [`supabase/functions/_shared/__tests__/helpers.test.ts`](../../supabase/functions/_shared/__tests__/helpers.test.ts) |
+| [`src/services/AutoScanProvider.tsx`](../../src/services/AutoScanProvider.tsx) |
+| [`src/services/useSlipScanner.ts`](../../src/services/useSlipScanner.ts) |
+| [`src/services/slips.ts`](../../src/services/slips.ts) |
+| [`src/services/processSlip.ts`](../../src/services/processSlip.ts) |
+| [`src/services/gallery.ts`](../../src/services/gallery.ts) |
+| [`src/services/gallery.web.ts`](../../src/services/gallery.web.ts) |
+| [`src/services/myNames.ts`](../../src/services/myNames.ts) |
+| [`src/app/scan.tsx`](../../src/app/scan.tsx) |
+| [`src/app/drafts.tsx`](../../src/app/drafts.tsx) |
+| [`src/ui/AutoScanBanner.tsx`](../../src/ui/AutoScanBanner.tsx) |
+| [`src/ui/ScannerStage.tsx`](../../src/ui/ScannerStage.tsx) |
+| [`src/ui/WaitNotice.tsx`](../../src/ui/WaitNotice.tsx) |
+| [`src/ui/PeriodSummary.tsx`](../../src/ui/PeriodSummary.tsx) |
 
 ### ส่วนกลางที่ฉันดูแลเพิ่ม (ไม่ใช่ของ FR นี้โดยตรง)
 
@@ -47,7 +51,7 @@
 
 ## ทำงานยังไง
 
- เล่าตั้งแต่ผู้ใช้กดปุ่ม จนถึงเห็นผลบนจอ ว่าข้อมูลผ่านไฟล์ไหนบ้าง
+ เมื่อมีสลิปถูกเพิ่มเข้ามาในคลังรูปภาพ -> ระบบอ่านเองอัตโนมัติ -> บันทึกลงในแอป
 
 ## การทดสอบ
 
@@ -55,4 +59,5 @@
 
 ## ข้อจำกัดและงานต่อไป
 
- สิ่งที่ยังไม่ดี และสิ่งที่อยากทำต่อ (ดูไอเดียได้จากบท "ข้อจำกัด" ในหนังสือ)
+ 1.ไม่อ่านสลิปเก่า
+ 2.ไม่อ่านสลิปที่เคยบันทึกไว้
