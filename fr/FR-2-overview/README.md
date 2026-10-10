@@ -13,6 +13,8 @@
 **Requirement FR-2**
 "แสดงรายรับ รายจ่าย ยอดคงเหลือ และยอดตามหมวด"
 
+**Acceptance criteria**
+
 1.ยอดคงเหลือ = ยอดตังต้น + รายรับ − รายจ่าย ที่ยืนยันแล้ว (แบบร่างไม่นับ)
 2.เลือกช่วง วันนี้ / 7 วัน / 1 เดือน / 6 เดือน / 1 ปี และได้ยอดแยกหมวดหมู่
 3.กราฟ 7 วันแสดงวันทีไม่มีรายจ่ายเปน 0
@@ -26,24 +28,32 @@
 
 | ไฟล์ | หน้าที่ (เขียนเอง 1 บรรทัด) |
 |---|---|
-| [`src/domain/summary.ts`](../../src/domain/summary.ts) | ✏️ |
-| [`src/domain/dates.ts`](../../src/domain/dates.ts) | ✏️ |
-| [`src/domain/recap.ts`](../../src/domain/recap.ts) | ✏️ |
-| [`src/domain/__tests__/recap.test.ts`](../../src/domain/__tests__/recap.test.ts) | ✏️ |
-| [`src/data/AppProvider.tsx`](../../src/data/AppProvider.tsx) | ✏️ |
-| [`src/app/(tabs)/index.tsx`](../../src/app/%28tabs%29/index.tsx) | ✏️ |
-| [`src/app/recap.tsx`](../../src/app/recap.tsx) | ✏️ |
-| [`src/ui/charts.tsx`](../../src/ui/charts.tsx) | ✏️ |
-| [`src/ui/SpendCalendar.tsx`](../../src/ui/SpendCalendar.tsx) | ✏️ |
+| [`src/domain/summary.ts`](../../src/domain/summary.ts) | 
+| [`src/domain/dates.ts`](../../src/domain/dates.ts) | 
+| [`src/domain/recap.ts`](../../src/domain/recap.ts) | 
+| [`src/domain/__tests__/recap.test.ts`](../../src/domain/__tests__/recap.test.ts) | 
+| [`src/data/AppProvider.tsx`](../../src/data/AppProvider.tsx) | 
+| [`src/app/(tabs)/index.tsx`](../../src/app/%28tabs%29/index.tsx) | 
+| [`src/app/recap.tsx`](../../src/app/recap.tsx) | 
+| [`src/ui/charts.tsx`](../../src/ui/charts.tsx) | 
+| [`src/ui/SpendCalendar.tsx`](../../src/ui/SpendCalendar.tsx) | 
 
 ## ทำงานยังไง
 
-✏️ เล่าตั้งแต่ผู้ใช้กดปุ่ม จนถึงเห็นผลบนจอ ว่าข้อมูลผ่านไฟล์ไหนบ้าง
+FR-2 จะแสดงหน้าต่าง Dashboard , กราฟ และอื่นๆ ตาม FR อื่นๆทั้งหมด
 
 ## การทดสอบ
 
-✏️ เทสต์ไหนตรวจอะไร และรันยังไง (เช่น `npm test`)
+Unit test: วันไทยและช่วงเวลา (TC-03, TC-08)
+Unit test: ภาพรวม (TC-09, TC-10, TC-11)
+Unit test: สรุปเดือนและปฏิทิน (TC-69, TC-70)
+
 
 ## ข้อจำกัดและงานต่อไป
+| ข้อจำกัด | ผลกระทบ | แก้ไขยังไง |
+|---|---|---|
+| แถบหมวดแสดงแค่ 5 หมวด ไม่มี "อื่น ๆ"|มีบางค่าที่ไม่ถูกจัดหมวดหายไปเปอร์เซ็นต์บนจอรวมจึงเป็น 93% |รวมหมวดทีเกินเปนแถว "อื่น ๆ"|
+|"จ่ายบ่อยสุด" นับตามชื่อเปีะ ๆ|"ข้าวมันไก่" กับ "ข้าวมันไก่ปาแดง" นับแยก|รวมชือทีคล้ายกัน หรือนับตามหมวด| 
+|งบเดือน vs ช่วง 1 เดือนอาจทําให้งง|หน้าเดียวกันเห็น ฿5,091 (งบ) และ ฿10,142 (1 เดือน)|เพิ่มคําอธิบายเล็ก ๆ ใต้การ์ดงบ"นับตังแต่วันที่ 1"| 
+|กราฟ 7 วันกดดูรายละเอียดไม่ได้|อยากรู้ว่าวันจันทร์ใช้อะไรต้องไปปฏิทินเอง|แตะแท่งแล้วเปิดแท็บรายการกรองวันนั้น| 
 
-✏️ สิ่งที่ยังไม่ดี และสิ่งที่อยากทำต่อ (ดูไอเดียได้จากบท "ข้อจำกัด" ในหนังสือ)
