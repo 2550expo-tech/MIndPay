@@ -1,0 +1,14 @@
+flowchart TD
+  A["Confirmed transactions<br/>(drafts excluded)"] --> B["Balance<br/>= opening + income − expenses"]
+  A --> C["Expenses of the last 7 days<br/>(today + 6 days before)"]
+  C --> D["Daily average = total ÷ days using the app (max 7)<br/>averageDailyExpense"]
+  D --> E{"Average = 0 ?"}
+  E -->|"yes"| F["Show 'No depletion date from current data'<br/>no division by zero (TC-15)"]
+  E -->|"no"| G{"Balance ≤ low-balance line ?"}
+  B --> G
+  G -->|"yes"| H["Status below_floor (TC-16)"]
+  G -->|"no"| I["Runway = ⌊(balance − line) ÷ average⌋ days<br/>Low-balance date = today + Runway (TC-14)"]
+  I --> J{"Runway"}
+  J -->|"< 7 days"| K["critical"]
+  J -->|"7–13 days"| L["watch"]
+  J -->|"≥ 14 days"| M["healthy (TC-17)"]

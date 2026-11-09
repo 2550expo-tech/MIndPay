@@ -1,0 +1,17 @@
+sequenceDiagram
+  actor U as User
+  participant TX as transaction screen
+  participant M as domain/money.ts
+  participant P as AppProvider/Repo
+  participant DB as Supabase (RLS)
+  participant H as Home (FR-2)
+  U->>TX: Enter ฿85 · Food · date
+  TX->>M: parseBahtToSatang("85")
+  M-->>TX: 8500 satang (checks > 0, ≤ 2 decimals)
+  U->>TX: Tap Save
+  TX->>P: addTransaction(...)
+  P->>DB: insert transactions (status = confirmed)
+  DB-->>P: new row (visible to owner only)
+  P-->>H: transactions changed
+  H->>H: computeBalance + summarizeRange<br/>balance, income, expenses, category totals
+  Note over U,H: Edit/delete: confirm first, Undo available → every total updates once

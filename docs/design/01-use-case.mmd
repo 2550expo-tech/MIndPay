@@ -1,0 +1,25 @@
+flowchart LR
+  U(["User<br/>(student / first jobber)"])
+  subgraph App["MindPay"]
+    UC1["UC-1 Manage transactions<br/>add, edit, categorize, delete (FR-1)"]
+    UC2["UC-2 View overview dashboard (FR-2)"]
+    UC3["UC-3 Log a transaction by voice (FR-3)"]
+    UC4["UC-4 Scan gallery for slips (FR-4)"]
+    UC5["UC-5 Talk to AI coach Nong Kla (FR-5)"]
+    UC6["UC-6 View Money Runway (FR-6)"]
+    UCA["Sign up / sign in"]
+  end
+  AI(["AI service<br/>(Gemini via Edge Function)"])
+  SP(["Phone / browser speech recognizer"])
+  U --- UCA
+  U --- UC1
+  U --- UC2
+  U --- UC3
+  U --- UC4
+  U --- UC5
+  U --- UC6
+  UC3 -. include .-> UC1
+  UC4 -. include .-> UC1
+  UC3 --- SP
+  UC4 --- AI
+  UC5 --- AI

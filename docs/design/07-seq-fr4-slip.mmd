@@ -1,0 +1,21 @@
+sequenceDiagram
+  actor U as User
+  participant S as scan screen / auto-scan
+  participant G as Gallery + on-device QR reader
+  participant F as Edge Function parse-slip
+  participant AI as Gemini (2 reads)
+  participant D as domain/slip.ts
+  participant DB as Supabase
+  U->>S: Open app / tap Scan slips
+  S->>G: find recent images, newest first
+  G-->>S: images with a slip QR (bank code, reference)
+  S->>F: send slip images only (+ JWT)
+  F->>AI: 2 models read in parallel
+  AI-->>F: amount, date, time, payee + confidence
+  F-->>S: cleaned result
+  S->>D: normalizeReading + 3-layer duplicate check
+  alt every field ≥ 0.80 and not a duplicate
+    D->>DB: insert (confirmed) → counted in balance
+  else any field < 0.80 / empty
+    D->>DB: insert (draft) → user reviews
+  end

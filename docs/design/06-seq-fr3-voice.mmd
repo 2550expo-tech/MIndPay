@@ -1,0 +1,14 @@
+sequenceDiagram
+  actor U as User
+  participant V as voice screen
+  participant SR as th-TH speech recognizer<br/>(phone / browser)
+  participant VP as domain/voice.ts
+  participant P as AppProvider/Repo
+  U->>V: Tap mic (permission asked once)
+  U->>SR: Say "rice 50 baht, water 15"
+  SR-->>V: recognized text
+  V->>VP: parseSpokenEntry(text)
+  VP-->>V: 2 drafts (rice ฿50 Food, water ฿15)
+  U->>V: Edit / switch income-expense / remove, then Save
+  V->>P: save confirmed values only
+  P-->>U: balance updates immediately (no audio stored)

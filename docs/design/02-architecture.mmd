@@ -1,0 +1,13 @@
+flowchart LR
+  subgraph Phone["Phone / web app (React Native)"]
+    UI["Screens<br/>src/app"] --> Domain["Rules and calculations<br/>src/domain (unit tested)"]
+    UI --> Data["AppProvider + Repo<br/>src/data"]
+    Scan["Gallery scan<br/>src/services"] --> QR["On-device slip QR reader"]
+    Voice["th-TH speech input<br/>(phone / browser)"] --> Domain
+  end
+  Data -->|"publishable key + RLS"| DB[("Supabase PostgreSQL<br/>profiles · transactions<br/>savings_goals · ai_usage")]
+  Data --> Auth["Supabase Auth<br/>email + password"]
+  Scan -->|"slip images only"| F1["Edge Function<br/>parse-slip"]
+  UI -->|"category totals only"| F2["Edge Function<br/>coach"]
+  F1 --> AI["Google Gemini API<br/>(key in Supabase Secrets)"]
+  F2 --> AI

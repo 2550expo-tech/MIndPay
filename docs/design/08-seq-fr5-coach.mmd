@@ -1,0 +1,18 @@
+sequenceDiagram
+  actor U as User
+  participant C as Coach tab (Nong Kla)
+  participant B as domain/coach + buddy
+  participant F as Edge Function coach
+  participant AI as Gemini
+  U->>C: Open coach / ask "Can I spend 500 today?"
+  C->>B: buildInsights + buildCoachContext
+  B-->>C: confirmed category totals only
+  C->>F: question + totals (+ JWT, AI quota)
+  alt AI available
+    F->>AI: prompt: never invent numbers, never blame
+    AI-->>F: short Thai answer
+    F-->>C: text (labeled as AI-generated guidance)
+    C-->>U: Nong Kla speaks + subtitles
+  else AI unavailable / no key
+    C-->>U: rule-based summary, recording still works
+  end

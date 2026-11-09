@@ -1,0 +1,41 @@
+erDiagram
+  AUTH_USERS ||--|| PROFILES : "has one"
+  AUTH_USERS ||--o{ TRANSACTIONS : "owns"
+  AUTH_USERS ||--o{ SAVINGS_GOALS : "sets"
+  AUTH_USERS ||--o{ AI_USAGE : "uses AI quota"
+  PROFILES {
+    uuid id PK
+    text display_name
+    bigint opening_balance_satang
+    bigint runway_floor_satang "FR-6 low-balance line"
+    bigint monthly_budget_satang
+    boolean onboarded
+  }
+  TRANSACTIONS {
+    uuid id PK
+    uuid user_id FK
+    text kind "income | expense"
+    bigint amount_satang "> 0"
+    text category_key "FR-1"
+    text title
+    timestamptz occurred_at
+    text source "manual | slip"
+    text status "draft | confirmed"
+    text slip_ref "FR-4 duplicate key"
+    text slip_image_hash "FR-4 duplicate key"
+    numeric ocr_confidence "FR-4 >= 0.80"
+  }
+  SAVINGS_GOALS {
+    uuid id PK
+    uuid user_id FK
+    text title
+    bigint target_satang
+    bigint saved_satang
+    date due_day
+  }
+  AI_USAGE {
+    bigint id PK
+    uuid user_id FK
+    text kind "slip | coach"
+    timestamptz created_at
+  }

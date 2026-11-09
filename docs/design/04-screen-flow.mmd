@@ -1,0 +1,18 @@
+flowchart TD
+  W["welcome<br/>sign up / sign in"] --> O["onboarding<br/>opening balance + low-balance line"]
+  O --> H
+  subgraph Tabs["Bottom tab bar"]
+    H["Home (FR-2)<br/>balance, income, expenses, categories"]
+    T["Transactions (FR-1)<br/>history + calendar"]
+    R["Runway (FR-6)<br/>Money Runway"]
+    C["Coach (FR-5)<br/>Nong Kla"]
+  end
+  H -->|"gold mic button"| V["voice (FR-3)<br/>speak → review → save"]
+  H -->|"Scan slips button"| S["scan (FR-4)<br/>read slips"]
+  H -->|"Add / Add income"| X["transaction (FR-1)<br/>add · edit · delete"]
+  T -->|"tap a row"| X
+  S -->|"unclear slip"| D["drafts<br/>to review"]
+  D --> X
+  V --> H
+  X --> H
+  H --> Set["settings"]
