@@ -8,6 +8,12 @@
 
 > **ที่มาของ repo นี้:** โค้ดย้ายมาจาก repo เดิมของทีม [2550expo-tech/Socrates-and-Skeletons-](https://github.com/2550expo-tech/Socrates-and-Skeletons-) ซึ่งเก็บประวัติการพัฒนาตั้งแต่ 27 ก.ย. 2569 แล้วแบ่งเป็น 5 ชุดตาม FR ให้แต่ละคน commit ส่วนที่ตัวเองรับผิดชอบ ลิงก์ในหัวข้อ "ลองใช้" เป็นเว็บและ APK จาก repo เดิม
 
+## M3 documents
+- Final Report + Golden Thread: [docs/final-report.pdf](docs/final-report.pdf)
+- Demo slides: [slides/MindPay-M3-demo.pdf](slides/MindPay-M3-demo.pdf)
+- Team Charter: [docs/M1-team-charter.pdf](docs/M1-team-charter.pdf)
+- Design diagrams: [docs/design/](docs/design/)
+
 ## งานของแต่ละคน (โฟลเดอร์ `fr/`)
 
 | ชุด | งาน | README ของผู้รับผิดชอบ |
