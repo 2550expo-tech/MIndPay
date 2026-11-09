@@ -8,6 +8,13 @@ Course: Introduction to Software Engineering (15031001) · Team 13. Socrates and
 
 > **Origin of this repository:** The code was moved from the team's original repository [2550expo-tech/Socrates-and-Skeletons-](https://github.com/2550expo-tech/Socrates-and-Skeletons-), which keeps the development history from 27 Sep 2026. It was then split into 5 packages by FR, and each member committed the part they are responsible for. The links under "Try it" are the web app and APK from the original repository.
 
+
+## M3 documents
+- Final Report + Golden Thread: [docs/final-report.pdf](docs/final-report.pdf)
+- Demo slides: [slides/MindPay-M3-demo.pdf](slides/MindPay-M3-demo.pdf)
+- Team Charter: [docs/M1-team-charter.pdf](docs/M1-team-charter.pdf)
+- Design diagrams: [docs/design/](docs/design/)
+
 ## Who did what (`fr/` folder)
 
 | Package | Work | Owner's README |
